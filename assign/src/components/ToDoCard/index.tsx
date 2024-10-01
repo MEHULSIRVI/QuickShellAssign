@@ -1,11 +1,10 @@
-import React from "react";
-import "./card.css";
+import "./todoCard.css";
 import UserIcon from "../UserIcon";
 import {
   Ticket,
   User,
 } from "../../interfaces";
-import { getStatusIcon } from "../../utils/helper";
+import { getStatusIcon } from "../../utils/GetIcons";
 import ThreeDotIcon from '../../utils/icons/ThreeDotIcon';
 
 function Card({

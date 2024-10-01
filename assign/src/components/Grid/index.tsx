@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import './grid.css'
 import Column from '../Column/Column';
 import { Ticket, User } from '../../interfaces';

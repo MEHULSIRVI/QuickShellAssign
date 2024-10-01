@@ -1,6 +1,6 @@
 import { Ticket, User } from "../interfaces";
 
-export const groupTicketsByStatus = (tickets: Ticket[]) => {
+export const StatusOption  = (tickets: Ticket[]) => {
     const groups: Record<string, Ticket[]> = tickets.reduce((result: Record<string, Ticket[]>, ticket: Ticket) => {
         if (!result[ticket.status]) {
             result[ticket.status] = [];
@@ -12,7 +12,7 @@ export const groupTicketsByStatus = (tickets: Ticket[]) => {
     return groups;
 };
 
-export const groupTicketsByPriority = (tickets: Ticket[]) => {
+export const priorityOption = (tickets: Ticket[]) => {
     const groups: Record<string, Ticket[]> = tickets.reduce((result: Record<string, Ticket[]>, ticket: Ticket) => {
         const priority = getPriotityLabel(ticket.priority);
         if (!result[priority]) {
@@ -25,7 +25,7 @@ export const groupTicketsByPriority = (tickets: Ticket[]) => {
     return groups;
 };
 
-export const groupTicketsByUserId = (tickets: Ticket[]) => {
+export const UserIdOption = (tickets: Ticket[]) => {
     const groups: Record<string, Ticket[]> = tickets.reduce((result: Record<string, Ticket[]>, ticket: Ticket) => {
         if (!result[ticket.userId]) {
             result[ticket.userId] = [];
@@ -57,8 +57,8 @@ const getPriotityLabel = (priority: number) => {
     }
 }
 
-const orderByPriority = (tickets: Ticket[]) => tickets.sort((a: Ticket, b: Ticket) => a.priority > b.priority ? -1 : 1);
-const orderByTitle = (tickets: Ticket[]) => tickets.sort((a: Ticket, b: Ticket) => a.title < b.title ? -1 : 1);
+const orderByPriority = (tickets: Ticket[]) => tickets.sort((first: Ticket, second: Ticket) => first.priority > second.priority ? -1 : 1);
+const orderByTitle = (tickets: Ticket[]) => tickets.sort((first: Ticket, second: Ticket) => first.title < second.title ? -1 : 1);
 
 export const loadGrid = (tickets: Ticket[], grouping: string, ordering: string) => {
     let orderedTickets;
@@ -68,9 +68,9 @@ export const loadGrid = (tickets: Ticket[], grouping: string, ordering: string) 
         orderedTickets = orderByTitle(tickets);
 
     switch (grouping) {
-        case "status": return groupTicketsByStatus(orderedTickets);
-        case "priority": return groupTicketsByPriority(orderedTickets);
-        case "user": return groupTicketsByUserId(orderedTickets);
-        default: return groupTicketsByUserId(orderedTickets);
+        case "status": return StatusOption(orderedTickets);
+        case "priority": return priorityOption(orderedTickets);
+        case "user": return UserIdOption(orderedTickets);
+        default: return UserIdOption(orderedTickets);
     }
 }

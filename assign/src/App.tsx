@@ -1,10 +1,10 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Header from './components/Header';
 import Grid from './components/Grid';
 import { GET_TICKETS_URL } from './constants';
 import { loadGrid, mapUsersByUserId } from './utils';
 import { Ticket, User } from './interfaces';
-import Loader from './components/Loader';
+import Loader from './components/LoadingScreen';
 import './App.css'
 
 function App() {

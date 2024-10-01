@@ -45,7 +45,7 @@
 
 .display-dropdown .dropdown-content-label {
     color: #8a8b8c;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .display-dropdown select {
@@ -55,4 +55,5 @@
     border-radius: 0.25rem;
     padding: 0.25rem 0.5rem;
     cursor: pointer;
+    font-weight: 700;
 }

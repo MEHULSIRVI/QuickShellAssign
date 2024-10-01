@@ -28,6 +28,7 @@
 
 .column .column-title {
     font-size: 12px;
+    font-weight: bolder;
     text-transform: capitalize;
 }
 

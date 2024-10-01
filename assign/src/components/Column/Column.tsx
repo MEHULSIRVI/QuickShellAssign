@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
-import Card from "../Card";
+import { useMemo } from "react";
+import Card from "../ToDoCard";
 import "./column.css";
 import { Ticket, User } from "../../interfaces";
-import { getPriorityIcon, getStatusIcon } from "../../utils/helper";
+import { getPriorityIcon, getStatusIcon } from "../../utils/GetIcons";
 import UserIcon from "../UserIcon";
 import ThreeDotIcon from "../../utils/icons/ThreeDotIcon";
 import AddIcon from "../../utils/icons/AddIcon";
@@ -17,12 +17,6 @@ function Column({
   groupBy: string;
   userIdToData: Record<string, User>;
 }) {
-  const title = useMemo(() => {
-    if (grouping === "status") return groupBy;
-    if (grouping === "priority") return groupBy;
-    if (grouping === "user") return userIdToData[groupBy].name;
-  }, [grouping, groupBy]);
-
   const icon = useMemo(() => {
     if (grouping === "status") return getStatusIcon(groupBy);
     if (grouping === "priority") return getPriorityIcon(groupBy);
@@ -34,6 +28,14 @@ function Column({
         />
       );
   }, [grouping, groupBy]);
+  
+  const title = useMemo(() => {
+    if (grouping === "status") return groupBy;
+    if (grouping === "priority") return groupBy;
+    if (grouping === "user") return userIdToData[groupBy].name;
+  }, [grouping, groupBy]);
+
+
 
   return (
     <div className="column">
